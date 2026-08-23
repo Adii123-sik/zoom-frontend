@@ -1,0 +1,931 @@
+.lobbyPage,
+.meetingPage {
+  min-height: 100vh;
+  background: #f4f7fb;
+  color: #17213a;
+}
+
+.lobbyPage {
+  background:
+    radial-gradient(circle at 10% 0%, rgba(76, 111, 255, 0.12), transparent 34%),
+    radial-gradient(circle at 90% 100%, rgba(124, 58, 237, 0.1), transparent 30%),
+    #f6f8fc;
+}
+
+.lobbyHeader {
+  height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 clamp(20px, 5vw, 72px);
+}
+
+.brandButton {
+  border: 0;
+  background: transparent;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #17213a;
+  font: inherit;
+  font-weight: 800;
+  font-size: 19px;
+  cursor: pointer;
+}
+
+.brandButton > span,
+.meetingBrand > span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #516cff, #6941c6);
+  color: white;
+  box-shadow: 0 10px 24px rgba(79, 70, 229, 0.25);
+}
+
+.secureLabel {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #667085;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.secureLabel svg,
+.lobbyNote svg {
+  font-size: 17px;
+}
+
+.lobbyShell {
+  width: min(1180px, calc(100% - 40px));
+  margin: 0 auto;
+  min-height: calc(100vh - 76px);
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(340px, 0.7fr);
+  gap: 54px;
+  align-items: center;
+  padding: 30px 0 70px;
+}
+
+.previewPanel {
+  min-width: 0;
+}
+
+.previewVideoWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border-radius: 28px;
+  background:
+    radial-gradient(circle at 50% 40%, rgba(105, 65, 198, 0.22), transparent 35%),
+    #151a27;
+  box-shadow: 0 34px 80px rgba(24, 34, 58, 0.2);
+}
+
+.previewVideoWrap video,
+.videoTile video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scaleX(-1);
+}
+
+.previewVideoWrap video.hiddenVideo,
+.videoTile video.hiddenVideo {
+  opacity: 0;
+}
+
+.previewFallback,
+.videoFallback {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  color: #d7dced;
+  background: radial-gradient(circle at center, rgba(81, 108, 255, 0.18), transparent 35%);
+}
+
+.previewFallback span {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.previewTopPill {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.72);
+  color: white;
+  backdrop-filter: blur(14px);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.previewControls {
+  position: absolute;
+  left: 50%;
+  bottom: 22px;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 12px;
+  padding: 8px;
+  border-radius: 18px;
+  background: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(18px);
+}
+
+.previewControlActive,
+.previewControlOff {
+  width: 48px !important;
+  height: 48px !important;
+  color: white !important;
+}
+
+.previewControlActive {
+  background: rgba(255,255,255,0.12) !important;
+}
+
+.previewControlOff {
+  background: #ea4d4d !important;
+}
+
+.mediaLoading {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 14px;
+  background: rgba(14, 20, 35, 0.68);
+  backdrop-filter: blur(8px);
+}
+
+.lobbyCard {
+  background: rgba(255,255,255,0.9);
+  border: 1px solid rgba(221, 226, 238, 0.9);
+  border-radius: 26px;
+  padding: 34px;
+  box-shadow: 0 28px 70px rgba(48, 57, 86, 0.12);
+  backdrop-filter: blur(18px);
+}
+
+.lobbyKicker {
+  color: #5b64ee;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+}
+
+.lobbyCard h1 {
+  margin: 9px 0 8px;
+  font-size: clamp(30px, 3vw, 42px);
+  letter-spacing: -0.04em;
+}
+
+.lobbyCard > p {
+  margin: 0 0 26px;
+  color: #667085;
+  line-height: 1.65;
+}
+
+.joinButton,
+.copyInviteButton {
+  width: 100%;
+  height: 52px;
+  border-radius: 14px;
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.joinButton {
+  margin-top: 18px;
+  border: 0;
+  color: white;
+  background: linear-gradient(135deg, #536dfe, #6d43ca);
+  box-shadow: 0 14px 30px rgba(83, 109, 254, 0.25);
+}
+
+.joinButton:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 18px 34px rgba(83, 109, 254, 0.32);
+}
+
+.joinButton:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.copyInviteButton {
+  margin-top: 10px;
+  border: 1px solid #e3e7ef;
+  color: #344054;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.copyInviteButton svg {
+  font-size: 18px;
+}
+
+.lobbyNote {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 19px;
+  color: #98a2b3;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.meetingPage {
+  height: 100vh;
+  overflow: hidden;
+  background: #0d111a;
+  color: white;
+}
+
+.meetingHeader {
+  height: 72px;
+  padding: 0 22px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 16px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  background: #111722;
+}
+
+.meetingBrand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.meetingBrand > span {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+}
+
+.meetingBrand svg {
+  font-size: 20px;
+}
+
+.roomMeta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.liveDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #41d68d;
+  box-shadow: 0 0 0 5px rgba(65,214,141,0.12);
+}
+
+.roomMeta > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 0;
+}
+
+.roomMeta strong {
+  max-width: 280px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 14px;
+}
+
+.roomMeta small {
+  margin-top: 2px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #8e99ac;
+  font-size: 10px;
+}
+
+.roomMeta small svg {
+  font-size: 12px;
+}
+
+.inviteButton {
+  justify-self: end;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  height: 38px;
+  padding: 0 14px;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 11px;
+  color: #e7ebf3;
+  background: rgba(255,255,255,0.06);
+  font: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.inviteButton svg {
+  font-size: 16px;
+}
+
+.meetingAlert {
+  position: fixed;
+  z-index: 50;
+  top: 82px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(560px, calc(100% - 30px));
+}
+
+.meetingBody {
+  height: calc(100vh - 72px - 92px);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  transition: grid-template-columns 0.25s ease;
+}
+
+.meetingBody.withChat {
+  grid-template-columns: minmax(0, 1fr) 350px;
+}
+
+.stage {
+  position: relative;
+  min-width: 0;
+  padding: 14px;
+  overflow: auto;
+}
+
+.videoGrid {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-auto-rows: minmax(220px, 1fr);
+  gap: 12px;
+  align-content: center;
+}
+
+.videoGrid.singleGrid {
+  grid-template-columns: minmax(0, min(980px, 100%));
+  justify-content: center;
+}
+
+.videoGrid.twoGrid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.videoTile {
+  position: relative;
+  min-height: 220px;
+  overflow: hidden;
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at 50% 42%, rgba(87, 113, 255, 0.18), transparent 34%),
+    #171d29;
+  border: 1px solid rgba(255,255,255,0.07);
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,0.05);
+}
+
+.videoFallback {
+  background:
+    radial-gradient(circle at 50% 45%, rgba(97, 83, 214, 0.2), transparent 32%),
+    #171d29;
+}
+
+.tileLabel {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  max-width: calc(100% - 24px);
+  padding: 6px 9px;
+  border-radius: 8px;
+  background: rgba(10, 15, 24, 0.68);
+  backdrop-filter: blur(8px);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.tileLabel span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tileLabel svg {
+  font-size: 14px;
+  color: #ff7777;
+}
+
+.screenBadge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  padding: 6px 9px;
+  border-radius: 8px;
+  background: #5a6df4;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.waitingPill {
+  position: absolute;
+  left: 50%;
+  bottom: 24px;
+  transform: translateX(-50%);
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  color: #b5bdca;
+  background: rgba(17,23,34,0.82);
+  border: 1px solid rgba(255,255,255,0.08);
+  font-size: 11px;
+  backdrop-filter: blur(10px);
+}
+
+.waitingPulse {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #7082ff;
+  box-shadow: 0 0 0 0 rgba(112,130,255,0.5);
+  animation: pulse 1.6s infinite;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(112,130,255,0.45); }
+  70% { box-shadow: 0 0 0 7px rgba(112,130,255,0); }
+  100% { box-shadow: 0 0 0 0 rgba(112,130,255,0); }
+}
+
+.chatPanel {
+  min-width: 0;
+  background: #f8fafc;
+  color: #182033;
+  border-left: 1px solid #202737;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  overflow: hidden;
+}
+
+.chatHeader {
+  min-height: 72px;
+  padding: 14px 14px 14px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #e7ebf1;
+}
+
+.chatHeader > div:first-child {
+  display: flex;
+  flex-direction: column;
+}
+
+.chatHeader strong {
+  font-size: 14px;
+}
+
+.chatHeader small {
+  margin-top: 3px;
+  color: #98a2b3;
+  font-size: 9px;
+}
+
+.chatMessages {
+  min-height: 0;
+  overflow: auto;
+  padding: 16px;
+}
+
+.chatEmpty {
+  height: 100%;
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #98a2b3;
+}
+
+.chatEmpty svg {
+  margin-bottom: 12px;
+  padding: 10px;
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  color: #6676ea;
+  background: #edf0ff;
+}
+
+.chatEmpty strong {
+  color: #475467;
+  font-size: 13px;
+}
+
+.chatEmpty span {
+  margin-top: 4px;
+  max-width: 210px;
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+.chatMessage {
+  margin-bottom: 14px;
+}
+
+.chatMessageMeta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 5px;
+  color: #667085;
+  font-size: 9px;
+}
+
+.chatMessageMeta strong {
+  color: #344054;
+}
+
+.chatMessage p {
+  width: fit-content;
+  max-width: 88%;
+  padding: 9px 11px;
+  border-radius: 4px 13px 13px 13px;
+  background: #eef1f6;
+  color: #344054;
+  font-size: 11px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.myMessage .chatMessageMeta {
+  flex-direction: row-reverse;
+}
+
+.myMessage p {
+  margin-left: auto;
+  border-radius: 13px 4px 13px 13px;
+  color: white;
+  background: #5868e9;
+}
+
+.chatComposer {
+  min-height: 72px;
+  padding: 12px;
+  display: grid;
+  grid-template-columns: 1fr 42px;
+  gap: 8px;
+  border-top: 1px solid #e7ebf1;
+  background: white;
+}
+
+.chatComposer input {
+  min-width: 0;
+  border: 1px solid #dfe4ec;
+  border-radius: 11px;
+  padding: 0 12px;
+  outline: 0;
+  font: inherit;
+  font-size: 11px;
+}
+
+.chatComposer input:focus {
+  border-color: #7180ef;
+  box-shadow: 0 0 0 3px rgba(113,128,239,0.12);
+}
+
+.chatComposer button {
+  border: 0;
+  border-radius: 11px;
+  color: white;
+  background: #5e6eee;
+  cursor: pointer;
+}
+
+.chatComposer button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.controlBar {
+  height: 92px;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  background: #111722;
+  border-top: 1px solid rgba(255,255,255,0.07);
+}
+
+.controlCenter {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.controlButton,
+.leaveButton {
+  border: 0;
+  color: white;
+  background: transparent;
+  font: inherit;
+  cursor: pointer;
+}
+
+.controlButton {
+  min-width: 66px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.controlButton > span {
+  width: 43px;
+  height: 43px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 13px;
+  background: #252d3b;
+  transition: 0.18s ease;
+}
+
+.controlButton:hover > span {
+  background: #30394a;
+}
+
+.controlButton small {
+  color: #aab2c1;
+  font-size: 8px;
+  white-space: nowrap;
+}
+
+.controlButton svg {
+  font-size: 20px;
+}
+
+.controlMuted > span {
+  background: #f2f4f7;
+  color: #182230;
+}
+
+.controlHighlighted > span {
+  background: #5c6ced;
+  color: white;
+}
+
+.chatControlWrap {
+  position: relative;
+}
+
+.unreadBadge {
+  position: absolute;
+  z-index: 3;
+  top: -4px;
+  right: 5px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #111722;
+  border-radius: 999px;
+  color: white;
+  background: #f04438;
+  font-size: 8px;
+  font-weight: 900;
+}
+
+.leaveButton {
+  height: 45px;
+  margin-left: 8px;
+  padding: 0 16px;
+  border-radius: 13px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #e64848;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.leaveButton:hover {
+  background: #d93f3f;
+}
+
+.connectionStatus {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: #8f99aa;
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.connectionStatus > span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #41d68d;
+}
+
+.controlSideRight {
+  justify-self: end;
+}
+
+.mobileBackButton {
+  display: none;
+}
+
+@media (min-width: 1200px) {
+  .videoGrid:not(.singleGrid):not(.twoGrid) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .lobbyShell {
+    grid-template-columns: 1fr;
+    gap: 26px;
+    padding-top: 16px;
+  }
+
+  .previewPanel {
+    max-width: 760px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .lobbyCard {
+    max-width: 620px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .meetingBody.withChat {
+    grid-template-columns: 1fr;
+  }
+
+  .meetingBody.withChat .stage {
+    display: none;
+  }
+
+  .chatPanel {
+    border-left: 0;
+  }
+
+  .controlSide,
+  .controlSideRight {
+    display: none;
+  }
+
+  .controlBar {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .secureLabel {
+    display: none;
+  }
+
+  .lobbyHeader {
+    height: 64px;
+    padding: 0 18px;
+  }
+
+  .lobbyShell {
+    min-height: calc(100vh - 64px);
+    width: min(100% - 24px, 1180px);
+    padding: 10px 0 30px;
+  }
+
+  .previewVideoWrap {
+    border-radius: 20px;
+    aspect-ratio: 4 / 3;
+  }
+
+  .lobbyCard {
+    padding: 24px 18px;
+    border-radius: 20px;
+  }
+
+  .meetingHeader {
+    height: 62px;
+    grid-template-columns: auto 1fr auto;
+    padding: 0 12px;
+  }
+
+  .meetingBrand strong {
+    display: none;
+  }
+
+  .roomMeta {
+    justify-content: center;
+  }
+
+  .roomMeta strong {
+    max-width: 150px;
+  }
+
+  .inviteButton {
+    width: 38px;
+    padding: 0;
+    justify-content: center;
+  }
+
+  .inviteButton:not(svg) {
+    font-size: 0;
+  }
+
+  .meetingBody {
+    height: calc(100vh - 62px - 78px);
+  }
+
+  .stage {
+    padding: 8px;
+  }
+
+  .videoGrid,
+  .videoGrid.twoGrid {
+    grid-template-columns: 1fr;
+    grid-auto-rows: minmax(200px, 1fr);
+    gap: 8px;
+  }
+
+  .videoTile {
+    min-height: 200px;
+    border-radius: 14px;
+  }
+
+  .controlBar {
+    height: 78px;
+    padding: 0 8px;
+    overflow-x: auto;
+  }
+
+  .controlCenter {
+    justify-content: center;
+    min-width: max-content;
+  }
+
+  .controlButton {
+    min-width: 54px;
+  }
+
+  .controlButton > span {
+    width: 39px;
+    height: 39px;
+  }
+
+  .controlButton small {
+    display: none;
+  }
+
+  .leaveButton {
+    width: 44px;
+    height: 42px;
+    padding: 0;
+    justify-content: center;
+  }
+
+  .leaveButton span {
+    display: none;
+  }
+}
